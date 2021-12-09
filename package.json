@@ -1,0 +1,29 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "ok",
+  "main": "index.js",
+  "scripts": {
+    "start" : "nodemon --inspect ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhatnam210/nodejs_blog.git"
+  },
+  "keywords": [
+    "nodejs",
+    "js",
+    "f8"
+  ],
+  "author": "naw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhatnam210/nodejs_blog/issues"
+  },
+  "homepage": "https://github.com/nhatnam210/nodejs_blog#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
+  }
+}
