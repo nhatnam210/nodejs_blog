@@ -1,0 +1,16 @@
+@import "variables";
+
+
+* {
+    font-family: $font;
+}
+
+
+h1 {
+    color: $first-color;
+}
+
+h2 {
+    color: rgb(33, 165, 0);
+    width: 100%;
+}
