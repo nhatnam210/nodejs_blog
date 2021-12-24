@@ -9,8 +9,14 @@ const port = 3000;
 //url chạy vào thẳng "public"
 app.use(express.static(path.join(__dirname, 'public')));
 
+//middleware
+app.use(express.urlencoded({
+    extended: true
+}))
+app.use(express.json());
+
 //HTTP logger
-app.use(morgan ('combined'));
+// app.use(morgan ('combined'));
 
 //Template engine
 app.engine('hbs', handlebars.create({
@@ -30,6 +36,17 @@ app.get("/news", (req, res) => {
     res.render('news');
 }) 
 
+app.get("/introduce", (req, res) => {
+    res.render('intro');
+}) 
 
+app.get("/search", (req, res) => {
+    res.render('search');
+}) 
+
+app.post("/search", (req, res) => {
+    console.log(req.body)
+    res.send('kết quả');
+}) 
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));

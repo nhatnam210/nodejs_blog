@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --inspect src/index.js",
-    "watch" : "node-sass --watch src/resources/scss --output src/public/css",
+    "watch": "node-sass --watch src/resources/scss --output src/public/css",
+    "tailwind": "npx tailwindcss -i src/resources/css/tailwind.css -o src/build/tailwind.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,6 +31,7 @@
   "devDependencies": {
     "morgan": "^1.10.0",
     "node-sass": "^7.0.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "tailwindcss": "^3.0.7"
   }
 }
