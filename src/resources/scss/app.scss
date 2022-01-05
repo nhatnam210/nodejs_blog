@@ -28,7 +28,7 @@ h2 {
 }
 
 .slick-home {
-    position: relative;
+                    position: relative;
 }
 
                                      .slick-arrow {
@@ -37,7 +37,7 @@ h2 {
     transform: translateY(-50%);
                     z-index: 1;
     outline: none;
-    border: none;
+                    border: none;
                     background: rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: $btn-radius;

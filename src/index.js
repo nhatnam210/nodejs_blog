@@ -27,7 +27,7 @@ app.use(
 
 //Template engine
 app.engine(
-              'hbs',
+                   'hbs',
             handlebars.create({
                     extname: '.hbs',
     }).engine,
@@ -37,12 +37,12 @@ app.engine(
 //Routes init
 route(app);
 
-            app.listen(port, () =>
-         console.log(`Example app listening at http://localhost:${port}`),
+                           app.listen(port, () =>
+                         console.log(`Example app listening at http://localhost:${port}`),
 );
 
 var object = {
-    a:      1,    
+                            a:      1,    
     b: 2   ,
         c: 3,
 };
