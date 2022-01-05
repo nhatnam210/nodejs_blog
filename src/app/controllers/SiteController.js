@@ -1,17 +1,17 @@
 class SiteController {
     // [GET] /
     home(req, res) {
-        res.render("home");
+        res.render('home');
     }
 
     // [GET] /search
     search(req, res) {
-        res.render("search");
+        res.render('search');
     }
     // [GET] /introduce
     introduce(req, res) {
-        res.render("introduce");
+        res.render('introduce');
     }
 }
 
-module.exports = new SiteController;
+module.exports = new SiteController();

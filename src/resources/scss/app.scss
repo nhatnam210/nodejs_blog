@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 * {
     font-family: $font;
@@ -31,14 +31,14 @@ h2 {
     position: relative;
 }
 
-.slick-arrow {
-    position: absolute;
+                    .slick-arrow {
+                    position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1;
+                    z-index: 1;
     outline: none;
     border: none;
-    background: rgba(0, 0, 0, 0.5);
+                    background: rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: $btn-radius;
     color: white;
@@ -75,6 +75,6 @@ h2 {
     background: rgba(0, 0, 0, 0.1);
 }
 
-.slick-dots button[aria-selected="true"] {
+.slick-dots button[aria-selected='true'] {
     background: rgba(0, 0, 0, 0.3);
 }
