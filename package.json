@@ -8,7 +8,8 @@
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss --output src/public/css",
     "tailwind": "npx tailwindcss -i src/resources/css/tailwind.css -o src/build/tailwind.css --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,19 @@
     "url": "https://github.com/nhatnam210/nodejs_blog/issues"
   },
   "homepage": "https://github.com/nhatnam210/nodejs_blog#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^6.0.2"
+  },
+  "devDependencies": {
+    "husky": "^7.0.0",
+    "lint-staged": "^12.1.5",
+    "morgan": "^1.10.0",
+    "node-sass": "^7.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "tailwindcss": "^3.0.7"
+  },
   "lint-staged": {
     "src/**/*.{route.js,js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
   },
@@ -32,18 +46,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "express-handlebars": "^6.0.2"
-  },
-  "devDependencies": {
-    "husky": "^7.0.4",
-    "lint-staged": "^12.1.5",
-    "morgan": "^1.10.0",
-    "node-sass": "^7.0.0",
-    "nodemon": "^2.0.15",
-    "prettier": "^2.5.1",
-    "tailwindcss": "^3.0.7"
   }
 }

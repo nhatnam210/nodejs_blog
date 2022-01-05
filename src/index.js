@@ -16,39 +16,38 @@ app.set('views', path.join(__dirname, 'resources/views'));
 
 //middleware
 app.use(
-                    express.urlencoded({
+    express.urlencoded({
         extended: true,
     }),
 );
-                app.use(express.json());
+app.use(express.json());
 
 //HTTP logger
 // app.use(morgan ('combined'));
 
 //Template engine
 app.engine(
-                   'hbs',
-            handlebars.create({
-                    extname: '.hbs',
+    'hbs',
+    handlebars.create({
+        extname: '.hbs',
     }).engine,
 );
-        app.set('view engine', 'hbs');
+app.set('view engine', 'hbs');
 
 //Routes init
 route(app);
 
-                              app.listen(port, () =>
-                           console.log(`Example app listening at http://localhost:${port}`),
+app.listen(port, () =>
+    console.log(`Example app listening at http://localhost:${port}`),
 );
 
 var object = {
-                            a:      1,    
-       b: 2   ,
-        c: 3,
-};
-var      object2 
-= {
     a: 1,
-        b: 2,
-        c: 555,
+    b: 2,
+    c: 3,
+};
+var object2 = {
+    a: 1,
+    b: 2,
+    c: 55,
 };
