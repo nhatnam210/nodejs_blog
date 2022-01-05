@@ -40,5 +40,10 @@
   },
   "lint-staged": {
     "src/**/*.{route.js,js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
