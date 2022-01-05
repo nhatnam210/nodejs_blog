@@ -10,7 +10,7 @@ function route(app) {
 
     // app.post("/search", (req, res) => {
     //     console.log(req.body);
-    //     res.send("kết quả");
+    //     res.send("kết quả");sss
     // });
 }
 
