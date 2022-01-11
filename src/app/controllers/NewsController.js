@@ -9,6 +9,7 @@ class NewsController {
         res.send('NEW DETAIL!!!');
     }
 
+    // [GET] /news/details
     details(req, res) {
         res.render('newsDetails');
     }

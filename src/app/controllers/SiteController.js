@@ -8,6 +8,7 @@ class SiteController {
     search(req, res) {
         res.render('search');
     }
+
     // [GET] /introduce
     introduce(req, res) {
         res.render('introduce');
