@@ -9,6 +9,12 @@ const port = 3000;
 //file "index" sẽ mặc định tự được chọc vào
 const route = require('./routes/index');
 
+const db = require('./config/db');
+
+//connect with DB
+
+db.connect();
+
 //url chạy vào thẳng vào "public"
 app.use(express.static(path.join(__dirname, 'public')));
 //ép path cho 'views'
