@@ -10,6 +10,14 @@ const port = 3000;
 //HTTP logger
 // app.use(morgan ('combined'));
 
+//middleware
+app.use(
+    express.urlencoded({
+        extended: true,
+    }),
+);
+app.use(express.json());
+
 //source
 //file "index" sẽ mặc định tự được chọc vào
 const route = require('./routes');
@@ -33,14 +41,6 @@ app.engine(
     }).engine,
 );
 app.set('view engine', 'hbs');
-
-//middleware
-app.use(
-    express.urlencoded({
-        extended: true,
-    }),
-);
-app.use(express.json());
 
 app.listen(port, () =>
     console.log(`App listening at http://localhost:${port}`),

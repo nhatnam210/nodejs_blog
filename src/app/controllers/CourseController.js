@@ -3,14 +3,31 @@ const { singleMongooseToObject } = require('../../util/mongoose');
 
 class CourseController {
     // [GET] /courses/:slug
-    showDetail(req, res, next) {
+    detail(req, res, next) {
         Course.findOne({ slug: req.params.slug })
             .then((course) =>
-                res.render('courses/show', {
+                res.render('courses/detail', {
                     course: singleMongooseToObject(course),
                 }),
             )
             .catch(next);
+    }
+
+    // [GET] /courses/create
+    create(req, res, next) {
+        res.render('courses/create');
+    }
+
+    // [GET] /courses/store
+    store(req, res, next) {
+        const formData = req.body;
+        formData.image = `https://i.ytimg.com/vi/${formData.videoId}/hqdefault.jpg?`;
+
+        const course = new Course(formData);
+        course
+            .save()
+            .then(() => res.redirect('/'))
+            .catch((err) => {});
     }
 }
 
