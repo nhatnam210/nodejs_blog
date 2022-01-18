@@ -78,3 +78,36 @@ h2 {
 .slick-dots button[aria-selected='true'] {
     background: rgba(0, 0, 0, 0.3);
 }
+
+.slick-home__img {
+    position: relative;
+}
+
+.slick-home__name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+.card {
+    height: 100%;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-card,
+.buy-course-btn {
+    display: inline-block;
+    margin-top: auto;
+}

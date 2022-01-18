@@ -1,35 +1,29 @@
+//library
 const express = require('express');
-const morgan = require('morgan');
 const path = require('path');
+const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 
 const app = express();
 const port = 3000;
 
-//file "index" sẽ mặc định tự được chọc vào
-const route = require('./routes/index');
-
-const db = require('./config/db');
-
-//connect with DB
-
-db.connect();
-
-//url chạy vào thẳng vào "public"
-app.use(express.static(path.join(__dirname, 'public')));
-//ép path cho 'views'
-app.set('views', path.join(__dirname, 'resources/views'));
-
-//middleware
-app.use(
-    express.urlencoded({
-        extended: true,
-    }),
-);
-app.use(express.json());
-
 //HTTP logger
 // app.use(morgan ('combined'));
+
+//source
+//file "index" sẽ mặc định tự được chọc vào
+const route = require('./routes');
+//Routes init
+route(app);
+
+//connect with DB
+const db = require('./config/db');
+db.connect();
+
+//url chạy vào thẳng vào "public" //Use static folder
+app.use(express.static(path.join(__dirname, 'public')));
+//ép path cho 'views'
+app.set('views', path.join(__dirname, 'resources', 'views'));
 
 //Template engine
 app.engine(
@@ -40,20 +34,14 @@ app.engine(
 );
 app.set('view engine', 'hbs');
 
-//Routes init
-route(app);
+//middleware
+app.use(
+    express.urlencoded({
+        extended: true,
+    }),
+);
+app.use(express.json());
 
 app.listen(port, () =>
-    console.log(`Example app listening at http://localhost:${port}`),
+    console.log(`App listening at http://localhost:${port}`),
 );
-
-var object = {
-    a: 1,
-    b: 2,
-    c: 3333,
-};
-var object2 = {
-    a: 1,
-    b: 2,
-    c: 55,
-};

@@ -25,3 +25,26 @@
             class="slick-home__img shadow" alt="...">
     </div>
 </div>
+<div class="space m-5"></div>
+<div class="mt-4">
+    <div class="row">
+        {{#each courses}}
+        <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="card">
+                <a href="/courses/{{this.slug}}">
+                    <img src="{{this.image}}" class="card-img-top" alt="{{this.name}}">
+                </a>
+                <div class="card-body">
+                    <a class="text-decoration-none text-dark" href="/courses/{{this.slug}}">
+                        <h5 class="card-title">{{this.name}}</h5>
+                    </a>
+                    <p class="card-text">{{this.description}}</p>
+                    <div class="bottom-card">
+                        <a href="#" class="btn btn-outline-success buy-course-btn">Mua khóa học</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
