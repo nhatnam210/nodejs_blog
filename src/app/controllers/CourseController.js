@@ -18,10 +18,9 @@ class CourseController {
         res.render('courses/create');
     }
 
-    // [GET] /courses/store
+    // [POST] /courses/store
     store(req, res, next) {
-        const formData = req.body;
-        formData.image = `https://i.ytimg.com/vi/${formData.videoId}/hqdefault.jpg?`;
+        const formData = toFormWithImage(req.body);
 
         const course = new Course(formData);
         course
@@ -29,6 +28,34 @@ class CourseController {
             .then(() => res.redirect('/'))
             .catch((err) => {});
     }
+
+    // [GET] /courses/:id/edit
+    edit(req, res, next) {
+        Course.findById(req.params.id)
+            .then((course) =>
+                res.render('courses/edit', {
+                    course: singleMongooseToObject(course),
+                }),
+            )
+            .catch(next);
+    }
+
+    // [PUT] /courses/:id
+    update(req, res, next) {
+        const formData = toFormWithImage(req.body);
+
+        Course.findOneAndUpdate({ _id: req.params.id }, formData)
+            .then(() => {
+                res.redirect('/me/stored/courses');
+            })
+            .catch(next);
+    }
+}
+
+function toFormWithImage(data) {
+    const newData = data;
+    newData.image = `https://i.ytimg.com/vi/${newData.videoId}/hqdefault.jpg?`;
+    return newData;
 }
 
 module.exports = new CourseController();

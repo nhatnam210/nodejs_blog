@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
+const methodOverride = require('method-override');
 
 const app = express();
 const port = 3000;
@@ -18,7 +19,9 @@ app.use(
 );
 app.use(express.json());
 
-//source
+//method override POST --> PUT
+app.use(methodOverride('_method'));
+
 //file "index" sẽ mặc định tự được chọc vào
 const route = require('./routes');
 //Routes init
@@ -38,8 +41,12 @@ app.engine(
     'hbs',
     handlebars.create({
         extname: '.hbs',
+        helpers: {
+            sum: (a, b) => a + b,
+        },
     }).engine,
 );
+
 app.set('view engine', 'hbs');
 
 app.listen(port, () =>

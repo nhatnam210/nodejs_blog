@@ -2,12 +2,14 @@ const newRouter = require('./news.route');
 const contactRouter = require('./contact.route');
 const siteRouter = require('./site.route');
 const courseRouter = require('./courses.route');
+const meRouter = require('./me.route');
 
 function route(app) {
     //route
     app.use('/news', newRouter);
     app.use('/courses', courseRouter);
     app.use('/contact', contactRouter);
+    app.use('/me', meRouter);
     app.use('/', siteRouter);
 
     // app.post("/search", (req, res) => {

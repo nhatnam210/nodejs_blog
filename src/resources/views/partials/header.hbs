@@ -1,15 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand text-warning fst-italic" href="/">Blog</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                {{!-- <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" href="/news">News</a>
                 </li>
@@ -21,26 +21,28 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-capitalize" href="/contact">contact</a>
-                </li>   
-                <li class="nav-item">
-                    <a class="nav-link text-capitalize" href="/courses/create">create</a>
-                </li>   
-                {{!-- <li class="nav-item dropdown">
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
+                        <img src="https://media.istockphoto.com/photos/rocky-mountains-and-autumnal-forest-with-colorful-trees-high-mountain-picture-id1282522992?b=1&k=20&m=1282522992&s=170667a&w=0&h=W_7cRAwDTWOqqXF3g9zwOaCMgol1-Vb4rYtlqBbJMYE="
+                            alt="" class="user-avatar">
+                        Naw
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="/courses/create">Create</a></li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="#">Something else
-                                here</a></li>
+                        <li><a class="dropdown-item" href="/me/stored/courses">My courses</a></li>
+                        <li><a class="dropdown-item" href="/me/stored/news">My news</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" href="#">Log out</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                {{!-- <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li> --}}
             </ul>
