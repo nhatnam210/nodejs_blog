@@ -25,7 +25,7 @@ class CourseController {
         const course = new Course(formData);
         course
             .save()
-            .then(() => res.redirect('/'))
+            .then(() => res.redirect('/me/stored/courses'))
             .catch((err) => {});
     }
 
@@ -56,10 +56,24 @@ class CourseController {
             .then(() => res.redirect('back'))
             .catch(next);
     }
+
+    // [PATCH] /courses/:id/restore
+    restore(req, res, next) {
+        Course.restore({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+
+    // [DELETE] /courses/:id/kill
+    permanentlyDestroy(req, res, next) {
+        Course.deleteOne({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
 }
 
 function toFormWithImage(data) {
-    const newData = data;
+    const newData = { ...data };
     newData.image = `https://i.ytimg.com/vi/${newData.videoId}/hqdefault.jpg?`;
     return newData;
 }

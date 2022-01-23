@@ -19,8 +19,8 @@
                 <td>{{this.level}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
-                    <a href="/courses/{{this._id}}/edit" class="btn btn-outline-warning text-dark">Sửa</a>
-                    <a href="" class="btn btn-outline-danger" data-id="{{this._id}}" data-bs-toggle="modal"
+                    <a href="/courses/{{this._id}}/edit" class="mb-1 btn btn-outline-warning text-dark">Sửa</a>
+                    <a href="" class="mb-1 btn btn-outline-danger" data-id="{{this._id}}" data-bs-toggle="modal"
                         data-bs-target="#delete-course-modal">Xóa</a>
                 </td>
             </tr>
@@ -66,6 +66,7 @@
             courseId = button.dataset.id
         })
 
+        //soft delete
         $('#btn-delete-course').click(() => {
             deleteForm.action = `/courses/${courseId}?_method=DELETE`
             deleteForm.submit();
