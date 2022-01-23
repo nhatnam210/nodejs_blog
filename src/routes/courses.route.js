@@ -11,6 +11,10 @@ router.post('/store', courseController.store);
 router.get('/:id/edit', courseController.edit);
 router.put('/:id', courseController.update);
 
+//xóa khóa học
+router.delete('/:id', courseController.destroy);
+
+//chi tiết khóa học
 router.get('/:slug', courseController.detail);
 
 module.exports = router;

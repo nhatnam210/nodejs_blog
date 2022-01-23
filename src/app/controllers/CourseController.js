@@ -50,6 +50,12 @@ class CourseController {
             })
             .catch(next);
     }
+    // [DELETE] /courses/:id
+    destroy(req, res, next) {
+        Course.delete({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
 }
 
 function toFormWithImage(data) {
