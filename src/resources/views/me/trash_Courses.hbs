@@ -68,7 +68,7 @@
 
         //xóa hoàn toàn
         $('#btn-delete-course').click(() => {
-            deleteForm.action = `/courses/${courseId}/permanentlyDestroy?_method=DELETE`
+            deleteForm.action = `/courses/${courseId}/force?_method=DELETE`
             deleteForm.submit();
         })
 
