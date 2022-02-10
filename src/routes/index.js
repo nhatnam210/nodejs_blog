@@ -1,8 +1,8 @@
 const newRouter = require('./news.route');
-const contactRouter = require('./contact.route');
-const siteRouter = require('./site.route');
 const courseRouter = require('./courses.route');
+const contactRouter = require('./contact.route');
 const meRouter = require('./me.route');
+const siteRouter = require('./site.route');
 
 function route(app) {
     //route

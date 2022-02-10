@@ -7,6 +7,9 @@ const courseController = require('../app/controllers/CourseController');
 router.get('/create', courseController.create);
 router.post('/store', courseController.store);
 
+//tùy chọn
+router.post('/handle-form-actions', courseController.handleFormActions);
+
 //chỉnh sửa khóa học
 router.get('/:id/edit', courseController.edit);
 router.put('/:id', courseController.update);
