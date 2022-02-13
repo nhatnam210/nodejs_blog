@@ -38,9 +38,10 @@ class MeController {
 
     // [GET] /me/trash/courses
     trashCourses(req, res, next) {
-        Course.findDeleted({})
-            .then((courses) =>
+        Promise.all([Course.findDeleted({}), Course.countDocumentsDeleted({})])
+            .then(([courses, deletedCount]) =>
                 res.render('me/trash_Courses', {
+                    deletedCount,
                     courses: multipMongooseToObject(courses),
                 }),
             )

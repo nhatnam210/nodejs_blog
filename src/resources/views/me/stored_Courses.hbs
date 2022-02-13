@@ -1,11 +1,11 @@
-<form class="mt-4" method="POST" action="/courses/handle-form-actions">
+<form name="handle-form-actions" class="mt-4" method="POST" action="/courses/handle-form-actions">
     <div>
-        <h3>Khóa học của tôi </h3>
+        <h3>My courses</h3>
         {{#if deletedCount}}
-        <a href="/me/trash/courses" class="text-decoration-none">Thùng rác</a> <span
+        <a href="/me/trash/courses" class="text-decoration-none">The trash</a> <span
             class="text-danger">({{deletedCount}})</span>
         {{/if}}
-        <h6 class="mt-2">Số khóa học hiện có: ({{count}})</h6>
+        <h6 class="mt-2">Current courses: ({{count}})</h6>
 
         {{!-- control option --}}
         <div class="mt-4 d-flex align-items-center">
@@ -18,9 +18,9 @@
             <select class="form-select form-select-sm checkbox-select-all-options" aria-label="Default select example"
                 name="action" required>
                 <option value="">--Choose action--</option>
-                <option value="delete">Delete</option>
+                <option class="text-danger" value="delete">Delete</option>
             </select>
-            <button class="btn btn-primary btn-sm disabled" id="btn-submit-checked-form">Thực hiện</button>
+            <button class="btn btn-primary btn-sm disabled" id="btn-submit-checked-form">Perform</button>
         </div>
     </div>
 
@@ -73,11 +73,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to <span class="text-danger">delete</span> this course?</p>
+                <p>Do you want to <span class="text-danger">delete</span> this course?</p>
+                <p class="fw-light">This course will be moved to the trash</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                <button id="btn-delete-course" type="button" class="btn btn-danger">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button id="btn-delete-course" type="button" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </div>
@@ -85,10 +86,31 @@
 
 {{!-- Delete hidden form --}}
 <form name="delete-course-form" method="POST"></form>
+
+{{!-- Confirm delete multiple course --}}
+<div id="delete-multiple-course-modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">Delete courses</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to <span class="text-danger">delete</span> the selected courses?</p>
+                <p class="fw-light">These courses will be moved to the trash!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button id="btn-delete-multiple-course" type="button" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     window.addEventListener('DOMContentLoaded', () => {
         var courseId;
         var deleteForm = document.forms['delete-course-form']
+        var handleFormActions =  document.forms['handle-form-actions']
 
         $('#delete-course-modal').on('show.bs.modal', function (event) {
             var button = event.relatedTarget
@@ -123,5 +145,28 @@
             else
                 $('#btn-submit-checked-form').addClass('disabled');
         }
+
+        var isSelectedDelete
+
+        //kiểm tra chọn đúng option 'delete' thì hiện bảng thông báo
+        $('select[name="action"]').change(function () {
+            isSelectedDelete = $(this).val() == 'delete';
+            if (isSelectedDelete) {
+                $('#btn-submit-checked-form').attr('data-bs-toggle', "modal")
+                $('#btn-submit-checked-form').attr('data-bs-target', "#delete-multiple-course-modal")
+            } else {
+                $('#btn-submit-checked-form').removeAttr('data-bs-toggle')
+                $('#btn-submit-checked-form').removeAttr('data-bs-target')
+            }
+        })
+
+        $('form[name="handle-form-actions"]').on('submit', function (e) {
+            if (isSelectedDelete) {
+                e.preventDefault()
+                $('#btn-delete-multiple-course').click(function () {
+                    handleFormActions.submit()
+                })
+            }
+        })
     })
 </script>

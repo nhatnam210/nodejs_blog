@@ -9,6 +9,10 @@ router.post('/store', courseController.store);
 
 //tùy chọn
 router.post('/handle-form-actions', courseController.handleFormActions);
+router.post(
+    '/last-handle-form-actions',
+    courseController.lastHandleFormActions,
+);
 
 //chỉnh sửa khóa học
 router.get('/:id/edit', courseController.edit);
