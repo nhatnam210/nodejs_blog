@@ -49,6 +49,4 @@ app.engine(
 
 app.set('view engine', 'hbs');
 
-app.listen(port, () =>
-    console.log(`App listening at http://localhost:${port}`),
-);
+app.listen(port, () => console.log(`Run app with http://localhost:${port}`));
