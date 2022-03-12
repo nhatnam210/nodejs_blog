@@ -1,13 +1,21 @@
 const Course = require('../models/Course.model');
 
-const { multipMongooseToObject } = require('../../util/mongoose');
+const { multipleMongooseToObject } = require('../../util/mongoose');
 
 class MeController {
     // [GET] /me/stored/courses
     storedCourses(req, res, next) {
+        let courseQuery = Course.find({});
+
+        if (req.query.hasOwnProperty('_sort')) {
+            courseQuery = courseQuery.sort({
+                [req.query.column]: req.query.type,
+            });
+        }
+
         // chạy 2 promise 1 lượt để hưởng đc kết quả của nhau
         Promise.all([
-            Course.find({}),
+            courseQuery,
             Course.countDocumentsDeleted({}),
             Course.countDocuments({}),
         ])
@@ -16,7 +24,7 @@ class MeController {
                 res.render('me/stored_Courses', {
                     deletedCount,
                     count,
-                    courses: multipMongooseToObject(courses),
+                    courses: multipleMongooseToObject(courses),
                 });
             })
             .catch(next);
@@ -30,7 +38,7 @@ class MeController {
         // Course.find({})
         //     .then((courses) =>
         //         res.render('me/stored_Courses', {
-        //             courses: multipMongooseToObject(courses),
+        //             courses: multipleMongooseToObject(courses),
         //         })
         //     )
         //     .catch(next);
@@ -42,7 +50,7 @@ class MeController {
             .then(([courses, deletedCount]) =>
                 res.render('me/trash_Courses', {
                     deletedCount,
-                    courses: multipMongooseToObject(courses),
+                    courses: multipleMongooseToObject(courses),
                 }),
             )
             .catch(next);
